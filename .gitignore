@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+storage/
+staticfiles/
+node_modules/
+test-results/
+playwright-report/

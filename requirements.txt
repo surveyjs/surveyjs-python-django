@@ -1,0 +1,9 @@
+# Runtime dependencies, pinned; the tests need nothing more. No daphne: it needs autobahn, which has no wheel for
+# Python 3.15 on Windows, so uvicorn serves the app (README: Prerequisites). No [standard] extras for uvicorn.
+django==6.1.3
+channels==4.3.2
+uvicorn==0.54.0
+websockets==17.4
+whitenoise==6.12.0
+django-environ==0.14.0
+httpx2==2.16.2

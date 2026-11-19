@@ -1,0 +1,57 @@
+{% extends "layouts/example.html" %}
+{% comment %}Demo only: this template also serves the embedded-schema example at /claim (Option A,
+     examples/views/load_definition_variables_data.py), which passes form_definition and form_variables (option_a).
+     /examples/load-definition-variables-data (Option B) gets record and records from examples/pages.py (PAGE_DATA).{% endcomment %}
+
+{% block description %}
+    <p>Load form schemas and user variables from your Python backend, either embedded in HTML or fetched from an API. Use variables to personalize form text and control question visibility, and restore saved answers through the API to prefill the form.</p>
+{% endblock %}
+
+{% block head %}
+    {% if option_a %}
+        {# Embed the schema and user variables as JSON: json_script escapes <, > and & for the page #}
+        {{ form_definition|json_script:"form-definition" }}
+        {{ form_variables|json_script:"form-variables" }}
+        <script>
+            window.FORM_DEFINITION = JSON.parse(document.getElementById("form-definition").textContent);
+            window.FORM_VARIABLES = JSON.parse(document.getElementById("form-variables").textContent);
+        </script>
+    {% endif %}
+{% endblock %}
+
+{% block try %}
+    <li>Choose <strong>Schema embedded in HTML</strong> to receive the schema and user variables with the page, or <strong>Load from the API</strong> to fetch them and any saved answers in a separate request. You can inspect the API call in <strong>Requests</strong>.</li>
+    <li>Switch <strong>Customer</strong> between Alice and Bob. User variables personalize the title with their name and plan and show priority handling only for the premium plan.</li>
+    <li>When using <strong>Load from the API</strong>, you can select a <strong>Saved response</strong> to prefill the form with the customer's answers.</li>
+    <li>Press <strong>Submit claim</strong> to save a new response. Open <strong>Data</strong> to inspect the saved answers; user variables are excluded.</li>
+    <li>Press <strong>Start over</strong> to clear the form and the saved response selection.</li>
+{% endblock %}
+
+{% block demo_user_control %}
+    <label class="flex items-center gap-2">
+        <span class="text-gray-600">Customer</span>
+        <select id="demo-user" data-reset-query="record" class="box-border h-9 rounded-md border border-gray-300 bg-white px-2 text-sm">
+            <option value="alice"{% if page.demoUser == "alice" %} selected{% endif %}>Alice (premium)</option>
+            <option value="bob"{% if page.demoUser == "bob" %} selected{% endif %}>Bob (basic)</option>
+        </select>
+    </label>
+{% endblock %}
+
+{% block actions %}
+    <span class="box-border inline-flex min-h-9 max-w-full items-stretch rounded-md border border-gray-300 bg-white p-0.5" role="group" aria-label="Schema delivery">
+        <a href="/claim"{% if option_a %} aria-current="page"{% endif %} class="flex items-center rounded px-2.5 py-1 no-underline {% if option_a %}bg-sjs-dark text-white{% else %}text-gray-700 hover:bg-gray-100{% endif %}">Schema embedded in HTML</a>
+        <a href="/examples/load-definition-variables-data"{% if not option_a %} aria-current="page"{% endif %} class="flex items-center rounded px-2.5 py-1 no-underline {% if option_a %}text-gray-700 hover:bg-gray-100{% else %}bg-sjs-dark text-white{% endif %}">Load from the API</a>
+    </span>
+    {% if not option_a %}
+        <form method="get" class="flex items-center gap-2">
+            <label for="record" class="text-gray-600">Saved response</label>
+            <select id="record" name="record" onchange="this.form.submit()" class="box-border h-9 rounded-md border border-gray-300 bg-white px-2 text-sm">
+                <option value="">New response</option>
+                {% for r in records %}
+                    <option value="{{ r.id }}"{% if r.id == record %} selected{% endif %}>{{ r.label }}</option>
+                {% endfor %}
+            </select>
+        </form>
+    {% endif %}
+    {% include "examples/partials/start-over.html" %}
+{% endblock %}

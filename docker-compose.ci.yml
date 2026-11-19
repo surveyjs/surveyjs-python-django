@@ -1,0 +1,16 @@
+# Tests only, never production: a deterministic AI provider for extraction and machine translation.
+#   docker compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.ci.yml up -d surveyjs ai-stub
+services:
+    ai-stub:
+        image: node:22-alpine
+        command: ["node", "/shared/contract-tests/ai-stub.mjs"]
+        volumes: ["./shared:/shared:ro"]
+        ports: ["127.0.0.1:3020:3020"]
+
+    surveyjs:
+        # Under the app's names: docker-compose.yml's command exports AI_PROVIDER and OLLAMA_BASE_URL from these, so
+        # setting AI_PROVIDER here would be overwritten with settings.env's empty SURVEYJS_AI_PROVIDER
+        environment:
+            SURVEYJS_AI_PROVIDER: ollama
+            SURVEYJS_OLLAMA_BASE_URL: http://ai-stub:3020
+        depends_on: [ai-stub]

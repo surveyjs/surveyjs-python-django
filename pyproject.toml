@@ -1,0 +1,8 @@
+# Project metadata. This is a Django project, not an installable package: its dependencies are in requirements.txt,
+# and `python manage.py test` runs the tests with Django's own runner.
+[project]
+name = "surveyjs-python-django"
+version = "1.0.0"
+description = "SurveyJS backend integration examples for Python and Django"
+readme = "README.md"
+requires-python = ">=3.14"

@@ -1,0 +1,7 @@
+{# Demo only: shown when a Run Server-Side Workflows switch is off. The page includes it with switch=… on=…. #}
+{% if switch and not on %}
+    <p class="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-900">
+        <strong>{% if switch == 'VALIDATE_RESPONSES' %}Response validation is disabled.{% else %}Form schema checking is disabled.{% endif %}</strong>
+        Set <code>{{ switch }}=true</code> in <code>settings.env</code>, start the service with <code>docker compose up -d surveyjs</code>, then restart the app.
+    </p>
+{% endif %}
