@@ -3,6 +3,7 @@
 This is the Python code behind [Integrate SurveyJS with Django](https://surveyjs.io/documentation/backend-integration-django), as a Django project you can run example by example. Each example of that page has a page here that runs the real SurveyJS component against these views, with a short "Try this" list, a live request log, a "What the server stored" panel and the code that just ran. SurveyJS has no backend of its own, so treat these as starting points for your own app.
 
 - SurveyJS demos: [app.demos.surveyjs.io](https://app.demos.surveyjs.io)
+- Backend integration examples on the SurveyJS website: [surveyjs.io/backend-integration/examples](https://surveyjs.io/backend-integration/examples)
 - The same examples for other platforms: [Python (FastAPI)](https://github.com/surveyjs/surveyjs-python-fastapi), [PHP (Laravel)](https://github.com/surveyjs/surveyjs-php-laravel), [ASP.NET Core](https://github.com/surveyjs/surveyjs-aspnet-core), [Node.js (Express)](https://github.com/surveyjs/surveyjs-nodejs), [Next.js](https://github.com/surveyjs/surveyjs-nextjs), [Java (Spring Boot)](https://github.com/surveyjs/surveyjs-java-spring-boot)
 
 There is no hosted catalog for this repository yet.
@@ -309,3 +310,9 @@ These examples must not be used as a real service as they are. They don't cover 
 - `demo/users.py`'s `DemoUserMiddleware` and `DemoUserWebSocketMiddleware`: the demo signs in Alice or Bob from a `demo_user` cookie. Your app uses `django.contrib.sessions` with `AuthenticationMiddleware`, and Channels' `AuthMiddlewareStack` for the relays; the views and consumers read `request.user` and `scope["user"]` either way.
 
 When you copy an example into your app, leave out the demo-only code: the `demo/` app (with its `MIDDLEWARE` lines, its `INSTALLED_APPS` line, its `config/urls.py` include and its `DemoSandbox` and `DemoUserWebSocketMiddleware` wrappers in `config/asgi.py`), `examples/pages.py`, `examples/frontend.py`, `examples/static.py`, `examples/relay/room_key.py`'s sandbox keys, `templates/`, `shared/ui/` (the page frame, its tabs and highlighting, the fonts and site images) and `shared/client/host.js` (its `mountSurvey()` is one line: `renderSurvey(survey, element)` from `survey-js-ui`).
+
+## Licence
+
+The code in this repository is available under the [MIT licence](LICENSE).
+
+The examples use SurveyJS Form Library, which is MIT-licensed as well. The examples marked "Commercial" in the Licence column above also use SurveyJS Survey Creator, Dashboard or PDF Generator, which are commercial products. You can integrate them and evaluate their functionality without a licence. Production use requires a developer licence for each developer who works with the SurveyJS APIs or implements the integration. See the [SurveyJS Licensing FAQ](https://surveyjs.io/faq#licensing) and the [End-User License Agreement](https://surveyjs.io/Developer-License-Agreement.pdf).

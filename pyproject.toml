@@ -4,5 +4,6 @@
 name = "surveyjs-python-django"
 version = "1.0.0"
 description = "SurveyJS backend integration examples for Python and Django"
+license = "MIT"
 readme = "README.md"
 requires-python = ">=3.14"
