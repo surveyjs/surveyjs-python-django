@@ -42,7 +42,7 @@ SURVEYJS_OLLAMA_BASE_URL = None
 OPENAI_API_KEY = None
 ANTHROPIC_API_KEY = None
 SURVEYJS_BUILD = None
-SURVEYJS_DOCS = 'https://surveyjs.io/documentation/backend-integration-django'
+SURVEYJS_DOCS = 'https://surveyjs.io/documentation/backend-integration-python-django'
 SURVEYJS_GITHUB = 'https://github.com/surveyjs/surveyjs-python-django'
 
 # Tests that expect an error log read it with assertLogs; keep the rest of the run's output quiet

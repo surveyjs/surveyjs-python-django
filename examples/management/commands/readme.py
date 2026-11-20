@@ -8,7 +8,7 @@ import sys
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-DOCS = "https://surveyjs.io/documentation/backend-integration-django"
+DOCS = "https://surveyjs.io/documentation/backend-integration-python-django"
 
 
 class Command(BaseCommand):

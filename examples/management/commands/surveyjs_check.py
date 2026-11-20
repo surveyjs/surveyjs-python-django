@@ -25,7 +25,7 @@ REGION_SOURCES = ["examples/views", "examples/consumers", "examples/relay", "sha
 RELAY_FILES = ["examples/consumers/fill_together.py", "examples/consumers/edit_together.py"]
 MAX_REGION_LINES = 24
 MAX_RELAY_REGION_LINES = 60
-DOCS = "https://surveyjs.io/documentation/backend-integration-django"
+DOCS = "https://surveyjs.io/documentation/backend-integration-python-django"
 # This platform's plumbing: a server region calls examples/integration/ or examples/db.py for these instead of showing them
 PLUMBING = ["json.dumps", "ensure_ascii", "httpx2", "TimeoutException", "ConnectError", "strftime", "isoformat",
             "cursor(", ".raw(", "RawSQL", ".extra(", "sqlite3"]

@@ -21,7 +21,7 @@ ROUNDTRIP = {"a": "  padded  ", "b": "", "c": None, "d": {}, "e": [{}], "f": [],
              "i": {"j": {"k": [1, "x", True]}}}
 """The contract test's round-trip document."""
 
-DOCS = "https://surveyjs.io/documentation/backend-integration-django"
+DOCS = "https://surveyjs.io/documentation/backend-integration-python-django"
 
 
 class ApiClient:

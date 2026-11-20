@@ -251,7 +251,7 @@ ANTHROPIC_API_KEY = text('ANTHROPIC_API_KEY')
 SURVEYJS_BUILD = text('SURVEYJS_BUILD')
 
 # Where the pages link: the docs (each example adds #<anchor>) and the repository (View on GitHub)
-SURVEYJS_DOCS = url('SURVEYJS_DOCS', 'https://surveyjs.io/documentation/backend-integration-django')
+SURVEYJS_DOCS = url('SURVEYJS_DOCS', 'https://surveyjs.io/documentation/backend-integration-python-django')
 SURVEYJS_GITHUB = url('SURVEYJS_GITHUB', 'https://github.com/surveyjs/surveyjs-python-django')
 
 # uvicorn takes the scheme and client address from X-Forwarded-Proto and -For sent by these addresses (the image:
